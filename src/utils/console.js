@@ -1,22 +1,15 @@
+const chalk = require("chalk")
 
-const log = () => {
-
-    const log = function(){
-        console.log("LOG: ", ...arguments)
-    };
-    const debug = function(){
-        console.log("DEBUG: ", ...arguments)
-    };
-    const warn = function(){
-        console.log("WARN: ", ...arguments)
-    };
-    const logError = function(){
-        console.log("ERROR: ", ...arguments)
-    };
-
-
-    return { log, debug, warn, error: logError }
-
+module.exports = {
+    // _debug: true,
+    _debug: process.env.DEBUG == 'true',
+    startDebug: function(){ this._debug = true; },
+    log: (msg, ...args) => console.log(chalk.gray(msg), ...args),
+    error: (msg, ...args) => console.log(chalk.red('⨉ '+msg), ...args),
+    success: (msg, ...args) => console.log(chalk.green('✓ '+msg), ...args),
+    info: (msg, ...args) => console.log(chalk.blue('ⓘ '+msg), ...args),
+    help: (msg) => console.log(`${chalk.white.bold('⚠ help:')} ${chalk.white(msg)}`),
+    debug(...args){
+        this._debug && console.log(chalk.magentaBright(`⚠ debug: `), args)
+    }
 }
-
-module.exports = log()
