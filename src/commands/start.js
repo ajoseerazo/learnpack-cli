@@ -93,6 +93,7 @@ class StartCommand extends SessionCommand {
         exercise,
       })
 
+      console.log("Stdout", stdout);
       
     })
 
