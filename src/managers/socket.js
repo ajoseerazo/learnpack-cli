@@ -105,6 +105,7 @@ module.exports = {
   },
   log: function (status, messages = [], report = [], data = null) {
     this.emit("log", status, messages, [], report, data);
+    console.log(messages);
     Console.log(messages);
   },
   emit: function (
