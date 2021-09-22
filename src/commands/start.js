@@ -92,8 +92,6 @@ class StartCommand extends SessionCommand {
         socket, configuration: config,
         exercise,
       })
-
-      console.log("Stdout", stdout);
       
     })
 
